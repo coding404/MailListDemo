@@ -1,5 +1,6 @@
 package com.example.ls.maillistdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,18 +26,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.rv_content)
-    RecyclerView mRvContent;
-    @InjectView(R.id.sidrbar)
-    SideBar mSidrbar;
-    @InjectView(R.id.tv_letter)
-    TextView mTvLetter;
 
+    @Bind(R.id.tv_about_me)
+    TextView mTvAboutMe;
+    @Bind(R.id.rv_content)
+    RecyclerView mRvContent;
+    @Bind(R.id.sidrbar)
+    SideBar mSidrbar;
+    @Bind(R.id.tv_letter)
+    TextView mTvLetter;
     private StickyItemDecoration mDecoration;
     private PinyinComparator pinyinComparator;
     private MedicineAdapter medicineAdapter;
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initMailList();
 
     }
@@ -137,5 +141,11 @@ public class MainActivity extends AppCompatActivity {
             userBeanList.add(userBean);
         }
         return userBeanList;
+    }
+
+    @OnClick(R.id.tv_about_me)
+    public void onClick() {
+        Intent intent = new Intent(this, AboutMeActivity.class);
+        startActivity(intent);
     }
 }
