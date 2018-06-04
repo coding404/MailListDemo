@@ -1,11 +1,14 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 def releaseTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
 
 android {
     compileSdkVersion 27
+
     defaultConfig {
         applicationId "com.example.ls.maillistdemo"
         minSdkVersion 15
@@ -32,6 +35,7 @@ repositories {
     maven { url "https://jitpack.io" }
 
     google()
+    mavenCentral()
 }
 
 dependencies {
@@ -42,7 +46,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.1.0'
-    compile 'com.jakewharton:butterknife:7.0.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation files('libs/pinyin4j-2.5.0.jar')
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //implementation "com.jakewharton:butterknife:$butterknife-version"
+//    kapt "com.jakewharton:butterknife-compiler:$butterknife-version"
+
+}
+
+kapt {
+    generateStubs = true
 }

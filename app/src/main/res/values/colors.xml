@@ -3,5 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bgPressColor">#ff808080</color>
+    <color name="bgUpColor">#22808080</color>
+    <color name="textSelectColor">#3399ff</color>
+    <color name="textUnSelectColor">#00f</color>
     <color name="white">#ffffff</color>
 </resources>
